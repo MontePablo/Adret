@@ -1,3 +1,6 @@
+import 'package:adret/home_page.dart';
+import 'package:adret/login_page.dart';
+import 'package:adret/utils/my_routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +17,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+
+      initialRoute: MyRoutes.loginRoute,
+      routes: {
+        MyRoutes.homeRoute:(context) =>HomePage(),
+        MyRoutes.loginRoute:(context) =>LoginPage()
+      },
     );
   }
 }
