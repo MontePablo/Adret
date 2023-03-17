@@ -1,6 +1,15 @@
+import 'dart:html';
+
+import 'package:adret/utils/my_routes.dart';
 import 'package:flutter/material.dart';
-class LoginPage extends StatelessWidget{
+class LoginPage extends StatefulWidget{
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   var changeButton=false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -27,6 +36,12 @@ class LoginPage extends StatelessWidget{
                     hintText: "enter email",
                     labelText: "Email",
                   ),
+                  validator: (value){
+                    if(value!.isEmpty) {
+                      return "email cannot be empty";
+                    }
+                    return null;
+                  },
                 ),
                 TextFormField(
                   obscureText: true,
@@ -34,30 +49,56 @@ class LoginPage extends StatelessWidget{
                     hintText: "enter password",
                     labelText: "Password",
                   ),
+                  validator: (value){
+                    if(value!.isEmpty) {
+                      return "password cannot be empty";
+                    } else if(value.length<6) {
+                      return "password length should be atleast 6";
+                    }
+                    return null;
+                  },
                 ),
-                Container(
-                  width: 150,
-                  height: 50,
-                  color:Colors.blue,
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Login",
-                    style: TextStyle(
-                      color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18
-                    ),
-                  ),
-                ),
+                // Container(
+                //   width: 150,
+                //   height: 50,
+                //   color:Colors.blue,
+                //   alignment: Alignment.center,
+                //   // child: Text(
+                //   //   "Login",
+                //   //   style: TextStyle(
+                //   //     color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18
+                //   //   ),
+                //   // ),
+                // ),
+                SizedBox(height: 10,),
                 InkWell(
-                  onTap: ,
+                  onTap:() async {
+                    setState(()  {
+                      changeButton=true;
+                    });
+                    await Future.delayed(Duration(seconds: 1));
+                    await Navigator.pushNamed(context, MyRoutes.homeRoute);
+                    setState(() {
+                      changeButton=false;
+                    });
+                  } ,
                   child: AnimatedContainer(
-                    duration: Duration(seconds: 1),
+                    duration: const Duration(seconds: 1),
                     width: changeButton?50: 150,
                     height: 50,
                     alignment: Alignment.center,
-                    child: Text(
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      // shape: changeButton?BoxShape.circle:BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(changeButton?20:8)
+                    ),
+                    child:changeButton?Icon(Icons.done,color: Colors.white,):
+                    const Text(
                       "Login",
                       style: TextStyle(
-                        color: Colors.white
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
                       ),
                     ),
                   ),
@@ -69,5 +110,4 @@ class LoginPage extends StatelessWidget{
       ),
     );
   }
-  
 }

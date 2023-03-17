@@ -2,6 +2,7 @@ import 'package:adret/home_page.dart';
 import 'package:adret/login_page.dart';
 import 'package:adret/utils/my_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.green,
+        fontFamily: GoogleFonts.lato().fontFamily
+        // primaryTextTheme: GoogleFonts.lateefTextTheme()
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
 
