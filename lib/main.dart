@@ -1,6 +1,9 @@
+import 'package:adret/bills.dart';
 import 'package:adret/home_page.dart';
 import 'package:adret/login_page.dart';
+import 'package:adret/models/bill.dart';
 import 'package:adret/utils/my_routes.dart';
+import 'package:adret/utils/my_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,18 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        fontFamily: GoogleFonts.lato().fontFamily
-        // primaryTextTheme: GoogleFonts.lateefTextTheme()
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-
+      themeMode: ThemeMode.light,
+      theme: Mytheme.lightTheme(context),
+      darkTheme: Mytheme.darkTheme(context),
       initialRoute: MyRoutes.loginRoute,
       routes: {
         MyRoutes.homeRoute:(context) =>HomePage(),
-        MyRoutes.loginRoute:(context) =>LoginPage()
+        MyRoutes.loginRoute:(context) =>LoginPage(),
+        MyRoutes.billsRoute:(context) =>Bills(),
       },
     );
   }
