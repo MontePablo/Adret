@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 
 class BillView extends StatelessWidget{
   Bill bill;
+
+  BillView(@required this.bill);
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -23,9 +27,6 @@ class BillView extends StatelessWidget{
       ),
     );
     throw UnimplementedError();
-  }
-
-  BillView(@required this.bill){
   }
 
 }

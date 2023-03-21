@@ -8,7 +8,9 @@ class Bills extends StatelessWidget{
       child: Padding(padding: EdgeInsets.all(16.0),
         child: ListView.builder(itemBuilder: (context,index){
           return BillView(FakeBills.bills[index]);
-        }),
+        },
+        itemCount: FakeBills.bills.length,
+        ),
         
       ),
     );
